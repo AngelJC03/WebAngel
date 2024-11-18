@@ -9,22 +9,50 @@
 <body>
     <header>
         <h1>Web Wave logo goes here</h1>
-        <h2>
+        <nav>
             <a href="#home" class="btn">Home</a>
-            <a href="#projects" class="btn">About</a>
+            <a href="#projects" class="btn">Projects</a>
             <a href="#skills" class="btn">Skills</a>
             <a href="#services" class="btn">Services</a>
             <a href="#aboutme" class="btn">About Me</a>
-        </h2>
+        </nav>
     </header>
-    <nav>
-    </nav>
     <main>
-        <h2>Welcome!</h2>
-        <p>This is a basic template for a website with a textured yellow background. Customize it as you like.</p>
+        <div class="hero">
+            <h2>Welcome!</h2>
+            <p>This is a basic template for a website with a textured yellow background. Customize it as you like.</p>
+        </div>
+        <div class="pullee-container">
+            <h1>
+                <div id="pullee-text">Swipe for preview</div>
+            </h1>
+            <input type="range" value="0" text="hi"class="pullee" />
+        </div>
+        <div class = "4-square-project-display" style="display:none;">
+            <div class="project">
+                <h3>Project 1</h3>
+                <p>This is a description of project 1.</p>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>This is a description of project 2.</p>
+            </div>
+            <div class="project">
+                <h3>Project 3</h3>
+                <p>This is a description of project 3.</p>
+            </div>
     </main>
     <footer>
         <p>&copy; 2024 Your Name</p>
     </footer>
+
+    <script>
+        // Automatically add the "floating" class after the first animation ends
+        const textElement = document.querySelector('.text');
+        textElement.addEventListener('animationend', () => {
+            textElement.classList.add('floating');
+        });
+    </script>
+
 </body>
 </html>
