@@ -8,49 +8,91 @@
 </head>
 <body>
     <header>
-        <h1>Web Wave logo goes here</h1>
-        <nav>
-            <a href="#home" class="btn">Home</a>
-            <a href="#projects" class="btn">Projects</a>
-            <a href="#skills" class="btn">Skills</a>
-            <a href="#services" class="btn">Services</a>
-            <a href="#aboutme" class="btn">About Me</a>
-        </nav>
+        <div class="navbar-container" > 
+            <h1>Web Wave logo goes here</h1>
+            <nav>
+                <a href="#home" class="btn">Home</a>
+                <a href="#projects" class="btn">Projects</a>
+                <a href="#skills" class="btn">Skills</a>
+                <a href="#services" class="btn">Services</a>
+                <a href="#aboutme" class="btn">About Me</a>
+            </nav>
+        </div>
     </header>
     <main>
-        <div class="hero">
-            <h2>Welcome!</h2>
-            <p>This is a basic template for a website with a textured yellow background. Customize it as you like.</p>
+    <div class="pullee-container">
+        <h1>
+            <div id="pullee-text">Swipe to begin.</div>
+        </h1>
+        <input type="range" value="0" min="0" max="100" id="pullee" class="pullee" />
+    </div>
+    <div class = "4-square-project-display" style="display:none;">
+        <div class="project">
+            <h3>Project 1</h3>
+            <p>This is a description of project 1.</p>
         </div>
-        <div class="pullee-container">
-            <h1>
-                <div id="pullee-text">Swipe for preview</div>
-            </h1>
-            <input type="range" value="0" text="hi"class="pullee" />
+        <div class="project">
+            <h3>Project 2</h3>
+            <p>This is a description of project 2.</p>
         </div>
-        <div class = "4-square-project-display" style="display:none;">
-            <div class="project">
-                <h3>Project 1</h3>
-                <p>This is a description of project 1.</p>
-            </div>
-            <div class="project">
-                <h3>Project 2</h3>
-                <p>This is a description of project 2.</p>
-            </div>
-            <div class="project">
-                <h3>Project 3</h3>
-                <p>This is a description of project 3.</p>
-            </div>
+        <div class="project">
+            <h3>Project 3</h3>
+            <p>This is a description of project 3.</p>
+        </div>
+     </div>
+     <div class="recent-work-label">
+        <h2>Recent Work</h2>
+    </div>
+    <table class="project-table">
+            <tr>
+                <td class="expandable">
+                    <div class="content">
+                    </div>
+                </td>
+                <td class="expandable">
+                    <div class="content">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="expandable">
+                    <div class="content">
+                    </div>
+                </td>
+                <td class="expandable">
+                    <div class="content">
+                    </div>
+                </td>
+            </tr>
+     </table>        
+    </div>
     </main>
-    <footer>
+    <footer class="home-page-footer">
         <p>&copy; 2024 Your Name</p>
     </footer>
 
     <script>
-        // Automatically add the "floating" class after the first animation ends
-        const textElement = document.querySelector('.text');
-        textElement.addEventListener('animationend', () => {
-            textElement.classList.add('floating');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const pullee = document.getElementById('pullee');
+            const pulleeContainer = document.querySelector('.pullee-container');
+            const navbar = document.querySelector('.navbar-container'); // Select navbar-container
+            const footer = document.querySelector('.home-page-footer'); // Select footer
+            const tableContainer = document.querySelector('.project-table');
+            const recentWork = document.querySelector('.recent-work-label');
+        
+            pullee.addEventListener('input', () => {
+                console.log(pullee.value);
+        
+                // When pullee reaches the max value
+                if (parseInt(pullee.value) === 100) {
+                    pulleeContainer.classList.add('slide-up'); // Slide container up
+                    navbar.classList.add('nav-bar-fade-in'); // Fade in the navbar
+                    footer.classList.add('visible'); // Trigger fade-in effect for footer
+                    tableContainer.classList.add('table-fade-in'); // Trigger fade-in effect for table
+                    recentWork.classList.add('visible'); // Trigger fade-in effect for recent work label
+                }
+            });
         });
     </script>
 

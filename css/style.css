@@ -18,23 +18,26 @@
             content: '';
             position: fixed;
             width: 100vw;
-            height: 100vh;
-            background-image: linear-gradient(to bottom right, rgb(16, 10, 37), rgb(25, 31, 43));
+            height: 100vh; /* Increase height to extend coverage */
             background-size: cover;
             transform-origin: center;
             z-index: -1; /* Send it behind the main content */
-        }        
+            background-image: linear-gradient(to bottom right, rgb(16, 10, 37), rgb(25, 31, 43));
+        }
         /* General header styling */
-        header {
+        .navbar-container {
             display: flex;                /* Enable flexbox */
             justify-content: center;      /* Center the content horizontally */
             align-items: center;          /* Align content vertically */
             padding: 1rem;
             color: #fff;                  /* Text color */
             gap: 1rem;                    /* Space between the buttons */
+            opacity: 0;                   /* Make it invisible initially */
+            visibility: hidden;           /* Hide it from the DOM flow */
+            transition: opacity 2s ease, visibility 2s ease; /* Smooth transition */
         }
         /* Button styling */
-        header .btn {
+        .navbar-container .btn {
             display: inline-block;
             padding: 0.5rem 1rem;
             margin: 0.5rem;
@@ -52,7 +55,7 @@
         }
 
         /* Styling for the h1 to make it look like a button */
-        header h1 {
+        .navbar-container h1 {
             text-align: left;
             margin-right: 100px;
             padding: 0.5rem 1rem;
@@ -64,22 +67,43 @@
         }
 
         /* Hover effect for h1, to make it brighten and dim */
-        header h1:hover {
+        .navbar-container h1:hover {
             transition: background-color 0.3s ease, color 0.3s ease;  /* Smooth transition */
             background-color: #7f6e1a;  /* Lighten the background */
             color: #333;                /* Darken the text color */
         }
-        header nav {
+        .navbar-container nav {
             border-radius: 10px;
             border: 2px solid #fff;  
         }
+        /* Fade-in effect */
+        .nav-bar-fade-in {
+            opacity: 1;                   /* Make it fully visible */
+            visibility: visible;          /* Ensure it's interactable */
+        }
         .hero {
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            max-width: 800px;
-            margin: 2rem auto;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            height: 70vh;
+        }
+        /* Initial state of the footer, fully hidden */
+        .home-page-footer {
+            background: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            opacity: 0; /* Start with fully transparent */
+            transition: opacity 2s ease; /* Only transition opacity */
+        }
+        /* Visible class to trigger the fade-in effect */
+        .home-page-footer.visible {
+            transition: opacity 2s ease, visibility 2s ease; /* Smooth transition */
+            visibility: visible; /* Make the footer visible */
+            opacity: 1; /* Make the footer fully visible */
         }
         footer {
             background: rgba(51, 51, 51, 0.8);
@@ -90,13 +114,20 @@
             width: 100%;
             bottom: 0;
         }
+        /* Initial state of the pullee */
         .pullee-container {
             position: fixed;
             text-align: center;
-            top: 700px;
+            top: 500px; /* Starting position */
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, 0); /* Start from its current position */
             width: 100%;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Smooth slide and fade transition */
+        }
+        /* Slide-up effect */
+        .pullee-container.slide-up {
+            opacity: 0;
+            transform: translate(-50%, -1000%); /* Move up off-screen */
         }
         .pullee-container h1 {
             position: absolute;
@@ -196,6 +227,15 @@
                     0 0 50px rgba(30, 144, 255, 0.5);
             }
         }
+        @keyframes fasterFlashBlue {
+            100% {
+                color: #1e90ff; /* Bright blue */
+                text-shadow: 
+                    0 0 5px #1e90ff,
+                    0 0 10px #1e90ff,
+                    0 0 20px #1e90ff;
+            }
+        }
         .pullee {
             -webkit-appearance: none; /* Removes default styling in Webkit browsers */
             appearance: none;
@@ -248,3 +288,96 @@
             background-image: radial-gradient(circle, #373737 10%, #2f2f2c 60%);
             border-radius: 10px;
         }
+        /* General table styling */
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto; /* Center the table */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds shadow to the table */
+            border-radius: 8px; /* Rounds the corners */
+            table-layout: fixed; /* Prevents layout from changing */
+            position: relative; /* For z-index management */
+            overflow: visible; /* Allow content to break out */
+            opacity: 0; /* Initially hidden */
+            visibility: hidden; /* Initially hidden */
+            transition: opacity 2s ease, visibility 2s ease; /* Fade-in effect */
+        }
+        /* Table container */
+        .project-table {
+            position: relative; /* Allow positioned children to expand outside */
+            overflow: visible; /* Ensure expanded content isn't clipped */
+        }
+        /* Table cells */
+        td {
+            width: 200px;
+            height: 200px;
+            position: relative; /* To contain absolutely positioned elements */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth expansion and shadow */
+            overflow: visible; /* Allow expanded content to break out */
+        }
+
+        /* Content inside the table cells */
+        td .content {
+            position: absolute; /* Break out of normal flow */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease; /* Smooth scaling */
+            z-index: 1; /* Default layer */
+        }
+
+        /* Images in cells */
+        td .content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Keep aspect ratio, fill the cell */
+            transition: transform 0.3s ease; /* Smooth scaling */
+        }
+
+        /* On hover, expand the cell itself */
+        td:hover {
+            transform: scale(1.25); /* Expand the cell */
+            z-index: 10; /* Bring the hovered cell to the front */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Add shadow to the hovered cell */
+            background-color: #fff; /* Optional: Highlight cell background */
+        }
+
+        /* On hover, expand the content */
+        td:hover .content {
+            transform: scale(1.2); /* Expand the content slightly more */
+        }
+
+        /* On hover, expand the image */
+        td:hover .content img {
+            transform: scale(1.1); /* Subtle zoom effect for image */
+        }
+        /* Define the fade-in effect when the table is fully loaded */
+        .table-fade-in {
+            opacity: 1; /* Fade in the table */
+            visibility: visible; /* Make it visible */
+            transition: opacity 2s ease, visibility 2s ease; /* Ensure the transition is smooth */
+        }
+        .recent-work-label {
+            margin-top: -20px;
+            margin-bottom: 70px;
+            height: 80px;
+            visibility: hidden;
+            opacity: 0;
+            text-align: center;
+            font: 50px "Custom-dotted-font";
+            
+            color: #000000;
+        }
+        .recent-work-label.visible {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 2s ease, visibility 2s ease;
+            animation: fasterFlashBlue 3s ease-in-out forwards;
+        }
+        /* animation to create flash effect */
