@@ -12,6 +12,7 @@
             line-height: 1.6;
             color: #333;
             overflow: hidden; /* Prevent scrollbars from showing */
+            background-image: linear-gradient(to bottom right, rgb(16, 10, 37), rgb(25, 31, 43));
         }
         
         body::before {
@@ -381,3 +382,5 @@
             animation: fasterFlashBlue 3s ease-in-out forwards;
         }
         /* animation to create flash effect */
+
+        
