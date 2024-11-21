@@ -12,7 +12,7 @@
             line-height: 1.6;
             color: #333;
             overflow: hidden; /* Prevent scrollbars from showing */
-            background-image: linear-gradient(to bottom right, rgb(16, 10, 37), rgb(25, 31, 43));
+            background-image: linear-gradient(to bottom, rgb(250, 112, 25), rgb(20, 212, 255));
         }
         
         body::before {
@@ -23,7 +23,7 @@
             background-size: cover;
             transform-origin: center;
             z-index: -1; /* Send it behind the main content */
-            background-image: linear-gradient(to bottom right, rgb(16, 10, 37), rgb(25, 31, 43));
+            background-image: linear-gradient(to bottom, rgb(250, 112, 25), rgb(20, 212, 255));
         }
         /* General header styling */
         .navbar-container {
@@ -59,19 +59,11 @@
         .navbar-container h1 {
             text-align: left;
             margin-right: 100px;
-            padding: 0.5rem 1rem;
-            background-color: #555555;  /* Same background as buttons */
-            color: #fff;                /* White text */
+            margin-top: 45px;
+            color: #fff;         
             border-radius: 5px;         /* Rounded corners */
             font-weight: bold;          /* Make the text bold */
             cursor: pointer;           /* Show pointer on hover */
-        }
-
-        /* Hover effect for h1, to make it brighten and dim */
-        .navbar-container h1:hover {
-            transition: background-color 0.3s ease, color 0.3s ease;  /* Smooth transition */
-            background-color: #7f6e1a;  /* Lighten the background */
-            color: #333;                /* Darken the text color */
         }
         .navbar-container nav {
             border-radius: 10px;
@@ -228,13 +220,13 @@
                     0 0 50px rgba(30, 144, 255, 0.5);
             }
         }
-        @keyframes fasterFlashBlue {
+        @keyframes RecentWorkFlashBlue {
             100% {
                 color: #1e90ff; /* Bright blue */
                 text-shadow: 
-                    0 0 5px #1e90ff,
-                    0 0 10px #1e90ff,
-                    0 0 20px #1e90ff;
+                    0 0 1px #1e90ff,
+                    0 0 2px #1e90ff,
+                    0 0 3px #1e90ff;
             }
         }
         .pullee {
@@ -269,7 +261,7 @@
             width: 40px; /* Width of the slider thumb */
             height: 40px; /* Height of the slider thumb */
             background-image: linear-gradient(to bottom right, #2d91fc, #004055); /* Gradient background */
-            border-radius: 15px; /* Make it round */
+            border-radius: 10px; /* Make it round */
             cursor: pointer; /* Pointer cursor on hover */
         }
 
@@ -352,7 +344,7 @@
         /* On hover, expand the content */
         td:hover .content {
             transform: scale(1.2); /* Expand the content slightly more */
-        }
+        } 
 
         /* On hover, expand the image */
         td:hover .content img {
@@ -365,7 +357,7 @@
             transition: opacity 2s ease, visibility 2s ease; /* Ensure the transition is smooth */
         }
         .recent-work-label {
-            margin-top: -20px;
+            margin-top: -80px;
             margin-bottom: 70px;
             height: 80px;
             visibility: hidden;
@@ -379,7 +371,7 @@
             visibility: visible;
             opacity: 1;
             transition: opacity 2s ease, visibility 2s ease;
-            animation: fasterFlashBlue 3s ease-in-out forwards;
+            animation: RecentWorkFlashBlue 3s ease-in-out forwards;
         }
         /* animation to create flash effect */
 
