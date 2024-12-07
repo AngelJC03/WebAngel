@@ -11,7 +11,7 @@
         <div class="navbar-container" > 
             <h1><img src="images/AJC-LOGO.png" alt="AJC Hub" width="150" height="120"></h1>
             <nav>
-                <a href="#home" class="btn">Home</a>
+                <a href="index.html" class="btn">Home</a>
                 <a href="#projects" class="btn">Projects</a>
                 <a href="#skills" class="btn">Skills</a>
                 <a href="#services" class="btn">Services</a>
@@ -71,30 +71,7 @@
         <p>&copy; 2024 Your Name</p>
     </footer>
 
-    <script>
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const pullee = document.getElementById('pullee');
-            const pulleeContainer = document.querySelector('.pullee-container');
-            const navbar = document.querySelector('.navbar-container'); // Select navbar-container
-            const footer = document.querySelector('.home-page-footer'); // Select footer
-            const tableContainer = document.querySelector('.project-table');
-            const recentWork = document.querySelector('.recent-work-label');
-        
-            pullee.addEventListener('input', () => {
-                console.log(pullee.value);
-        
-                // When pullee reaches the max value
-                if (parseInt(pullee.value) === 100) {
-                    pulleeContainer.classList.add('slide-up'); // Slide container up
-                    navbar.classList.add('nav-bar-fade-in'); // Fade in the navbar
-                    footer.classList.add('visible'); // Trigger fade-in effect for footer
-                    tableContainer.classList.add('table-fade-in'); // Trigger fade-in effect for table
-                    recentWork.classList.add('visible'); // Trigger fade-in effect for recent work label
-                }
-            });
-        });
-    </script>
+    <script src="js/main.js"></script>
 
 </body>
 </html>
